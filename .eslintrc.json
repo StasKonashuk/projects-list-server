@@ -18,7 +18,8 @@
     "operator-linebreak": "off",
     "object-curly-newline": "off",
     "dot-notation": "off",
-    "no-restricted-globals": "off",
-    "newline-per-chained-call": "off"
+    "import/no-dynamic-require": "off",
+    "arrow-body-style": "off",
+    "global-require": "off"
   }
 }

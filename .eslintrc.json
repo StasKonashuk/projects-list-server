@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "consistent-return": "off",
+    "comma-dangle": "off",
+    "prefer-destructuring": "off",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "class-methods-use-this": "off",
+    "operator-linebreak": "off",
+    "object-curly-newline": "off",
+    "dot-notation": "off",
+    "no-restricted-globals": "off",
+    "newline-per-chained-call": "off"
+  }
+}

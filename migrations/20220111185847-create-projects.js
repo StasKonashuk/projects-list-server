@@ -37,14 +37,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      project_task_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      project_task_status: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

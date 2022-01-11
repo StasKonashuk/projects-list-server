@@ -1,7 +1,10 @@
+const { Projects } = require('../models');
+
 class ProjectsController {
-  getProjects(req, res) {
+  async getProjects(req, res) {
     try {
-      console.log('Get');
+      const projects = await Projects.findAll();
+      res.status(200).json(projects);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

@@ -1,9 +1,10 @@
 const express = require('express');
+const projectsController = require('./controller/projectsController');
 
 const rootRouter = express.Router();
 
-rootRouter.get('/projects');
-rootRouter.post('/create-project');
-rootRouter.patch('/update-project');
+rootRouter.get('/projects', projectsController.getProjects);
+rootRouter.post('/create-project', projectsController.createProject);
+rootRouter.patch('/update-project', projectsController.updateProject);
 
 module.exports = rootRouter;

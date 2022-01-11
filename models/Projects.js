@@ -3,56 +3,61 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Projects extends Model {
     static associate() {}
+
+    toJSON() {
+      return { ...this.get(), project_id: undefined };
+    }
   }
   Projects.init(
     {
-      projectId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
+      project_id: {
+        allowNull: false,
         autoIncrement: true,
-        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
       },
-      projectName: {
+      project_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      projectTitle: {
+      project_title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      projectDescription: {
+      project_description: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      projectAuthor: {
+      project_author: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      projectVersionSystemControl: {
+      project_version_system_control: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
       },
-      companName: {
+      company_name: {
         type: DataTypes.STRING,
       },
-      projectLanguage: {
+      project_language: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      projectTaskName: {
-        type: DataTypes.STRING,
+      createdAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
-      projectTaskStatus: {
-        type: DataTypes.STRING,
+      updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
       },
     },
     {
       sequelize,
+      tableName: 'Projects',
       modelName: 'Projects',
     }
   );

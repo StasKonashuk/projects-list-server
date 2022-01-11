@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "make-model": "npx sequelize-cli model:generate --projects --attributes project_id:integer",
+    "make-model": "npx sequelize-cli model:generate --name projects --attributes project_id:integer",
     "migrate": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo",
     "server": "nodemon server.js",

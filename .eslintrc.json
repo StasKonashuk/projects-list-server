@@ -21,6 +21,7 @@
     "import/no-dynamic-require": "off",
     "arrow-body-style": "off",
     "global-require": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "no-unreachable-loop": "off"
   }
 }

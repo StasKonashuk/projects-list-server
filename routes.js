@@ -5,6 +5,6 @@ const rootRouter = express.Router();
 
 rootRouter.get('/projects', projectsController.getProjects);
 rootRouter.post('/create-project', projectsController.createProject);
-rootRouter.patch('/update-project', projectsController.updateProject);
+rootRouter.put('/update-project', projectsController.updateProject);
 
 module.exports = rootRouter;

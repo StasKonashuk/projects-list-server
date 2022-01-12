@@ -3,7 +3,6 @@ module.exports = {
     await queryInterface.createTable('Projects', {
       project_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },

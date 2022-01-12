@@ -3,7 +3,6 @@ module.exports = {
     await queryInterface.createTable('Tasks', {
       task_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
@@ -14,6 +13,10 @@ module.exports = {
       task_status: {
         allowNull: false,
         type: Sequelize.STRING,
+      },
+      project_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

@@ -2,17 +2,18 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Tasks extends Model {
-    static associate() {}
+    static associate({ Projects }) {
+      this.belongsTo(Projects, { foreignKey: 'project_id', as: 'projects' });
+    }
 
     toJSON() {
-      return { ...this.get(), task_id: undefined };
+      return { ...this.get(), task_id: undefined, project_id: undefined };
     }
   }
   Tasks.init(
     {
       task_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },

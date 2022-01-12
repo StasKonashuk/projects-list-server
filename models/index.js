@@ -45,13 +45,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.projects = require('./Projects')(sequelize, Sequelize);
-db.tasks = require('./Tasks')(sequelize, Sequelize);
-
-db.projects.hasMany(db.tasks, { as: 'tasks' });
-db.tasks.belongsTo(db.projects, {
-  foreignKey: 'projectId',
-  as: 'project',
-});
-
 module.exports = db;

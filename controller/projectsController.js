@@ -24,7 +24,7 @@ class ProjectsController {
       email,
       projectAuthor,
       projectDescripton,
-      projectLanguage: { language },
+      projectLanguage: { status, language },
       projectName,
       projectTasks,
       projectTitle,
@@ -42,6 +42,7 @@ class ProjectsController {
         email,
         company_name: companyName,
         project_language: language,
+        project_language_status: status,
       })
         .then(() => {
           for (const task of projectTasks) {
@@ -69,7 +70,7 @@ class ProjectsController {
       email,
       projectAuthor,
       projectDescripton,
-      projectLanguage: { language },
+      projectLanguage: { status, language },
       projectName,
       projectTasks,
       projectTitle,
@@ -85,6 +86,7 @@ class ProjectsController {
           project_version_system_control: projectVersionSystemControl,
           email,
           company_name: companyName,
+          project_language_status: status,
           project_language: language,
         },
         { returning: true, where: { project_id: id } }
@@ -96,7 +98,7 @@ class ProjectsController {
                 task_name: task.name,
                 task_status: task.status,
               },
-              { returning: true, where: { task_id: task.id } }
+              { returning: true, where: { project_id: id } }
             );
           }
           res.status(200).json({ message: 'Project updated successfully' });

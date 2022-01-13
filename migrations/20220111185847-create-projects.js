@@ -32,6 +32,10 @@ module.exports = {
       company_name: {
         type: Sequelize.STRING,
       },
+      project_language_status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       project_language: {
         type: Sequelize.STRING,
         allowNull: false,

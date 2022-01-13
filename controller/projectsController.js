@@ -47,7 +47,6 @@ class ProjectsController {
         .then(() => {
           for (const task of projectTasks) {
             Tasks.create({
-              task_id: task.id,
               task_name: task.name,
               task_status: task.status,
               project_id: id,
@@ -98,7 +97,7 @@ class ProjectsController {
                 task_name: task.name,
                 task_status: task.status,
               },
-              { returning: true, where: { project_id: id } }
+              { returning: true, where: { task_id: task.id } }
             );
           }
           res.status(200).json({ message: 'Project updated successfully' });

@@ -47,7 +47,7 @@ const schema = Joi.object().keys({
           'string.min': 'Task Name needs to be at least 3 character',
           'string.empty': 'Task Name is needed',
         }),
-        status: Joi.string().required().min(3).max(10).messages({
+        status: Joi.string().required().min(3).max(12).messages({
           'string.max': 'Task Status is too long',
           'string.min': 'Task Status needs to be at least 3 character',
           'string.empty': 'Task Status is needed',

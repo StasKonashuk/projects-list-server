@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.INTEGER,
+        autoIncrement: true,
       },
       task_name: {
         allowNull: false,

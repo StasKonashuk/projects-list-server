@@ -5,10 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Tasks }) {
       this.hasMany(Tasks, { foreignKey: 'project_id', as: 'tasks' });
     }
-
-    toJSON() {
-      return { ...this.get(), project_id: undefined };
-    }
   }
   Projects.init(
     {
@@ -42,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       company_name: {
         type: DataTypes.STRING,
+      },
+      project_language_status: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       project_language: {
         type: DataTypes.STRING,

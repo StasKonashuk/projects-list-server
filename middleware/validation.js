@@ -2,37 +2,11 @@ const schema = require('../validators/schema');
 
 const validator = (req, res, next) => {
   try {
-    const {
-      id,
-      companyName,
-      email,
-      projectAuthor,
-      projectDescripton,
-      projectLanguage,
-      projectName,
-      projectTasks,
-      projectTitle,
-      projectVersionSystemControl,
-    } = req.body;
     const options = {
       allowUnknown: true,
       abortEarly: false,
     };
-    const { error } = schema.validate(
-      {
-        id,
-        companyName,
-        email,
-        projectAuthor,
-        projectDescripton,
-        projectLanguage,
-        projectName,
-        projectTasks,
-        projectTitle,
-        projectVersionSystemControl,
-      },
-      options
-    );
+    const { error } = schema.validate(req.body, options);
     if (error) {
       const errors = {};
       error.details.forEach((x) => {

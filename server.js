@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const rootRouter = require('./routes');
 const { sequelize } = require('./models');
+const { notFoundHandler, errorHandler } = require('./middleware/error');
 
 const PORT = process.env.PORT || 5000;
 
@@ -11,6 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use('/api', rootRouter);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.listen(PORT, async () => {
   try {

@@ -42,7 +42,9 @@ class ProjectsController {
           task_status: task.status,
           project_id: id,
         });
-        res.status(200).json({ message: 'Project created successfully' });
+        return res
+          .status(200)
+          .json({ message: 'Project created successfully' });
       }
     }
   }
@@ -86,7 +88,7 @@ class ProjectsController {
           { where: { task_id: task.id } }
         );
       }
-      res.status(200).json({ message: 'Project updated successfully' });
+      return res.status(200).json({ message: 'Project updated successfully' });
     }
   }
 }

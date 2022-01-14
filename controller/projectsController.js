@@ -5,7 +5,7 @@ class ProjectsController {
     const projects = await Projects.findAll({
       include: ['tasks'],
     });
-    res.status(200).json(projects);
+    res.json(projects);
   }
 
   async createProject(req, res) {
@@ -35,18 +35,21 @@ class ProjectsController {
       project_language_status: status,
     });
 
-    if (project) {
-      for (const task of projectTasks) {
-        Tasks.create({
-          task_name: task.name,
-          task_status: task.status,
-          project_id: id,
-        });
-        return res
-          .status(200)
-          .json({ message: 'Project created successfully' });
-      }
+    const tasks = [];
+
+    for (const key of projectTasks) {
+      const task = await Tasks.create({
+        task_name: key.name,
+        task_status: key.status,
+        project_id: id,
+      });
+      tasks.push(task);
     }
+    res.json({
+      ...project.get({ plain: true }),
+      tasks,
+      message: 'Project created successfully',
+    });
   }
 
   async updateProject(req, res) {
@@ -63,7 +66,7 @@ class ProjectsController {
       projectVersionSystemControl,
     } = req.body;
 
-    const project = await Projects.update(
+    await Projects.update(
       {
         project_name: projectName,
         project_title: projectTitle,
@@ -78,18 +81,19 @@ class ProjectsController {
       { where: { project_id: id } }
     );
 
-    if (project) {
-      for (const task of projectTasks) {
-        Tasks.update(
-          {
-            task_name: task.name,
-            task_status: task.status,
-          },
-          { where: { task_id: task.id } }
-        );
-      }
-      return res.status(200).json({ message: 'Project updated successfully' });
+    for (const key of projectTasks) {
+      await Tasks.update(
+        {
+          task_name: key.name,
+          task_status: key.status,
+        },
+        { where: { task_id: key.id } }
+      );
     }
+
+    res.json({
+      message: 'Project updated successfully',
+    });
   }
 }
 

@@ -23,6 +23,7 @@
     "global-require": "off",
     "no-restricted-syntax": "off",
     "no-unreachable-loop": "off",
-    "newline-per-chained-call": "off"
+    "newline-per-chained-call": "off",
+    "no-await-in-loop": "off"
   }
 }
